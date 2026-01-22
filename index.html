@@ -104,4 +104,86 @@
         .modal-close {
             position: absolute;
             top: 10px; right: 15px;
-            color: #
+            color: #ccc;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="menu-toggle" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+</div>
+<div id="side-menu">
+    <nav><ul><li><a href="index.html">Home</a></li></ul></nav>
+    <div class="close-btn" onclick="toggleMenu()">&times; Close</div>
+</div>
+<div id="menu-overlay" onclick="toggleMenu()"></div>
+
+<header>
+    <h1>なんでも制作株式会社</h1>
+    <p>ホームページ</p>
+</header>
+
+<div class="container">
+    <section id="about">
+        <h2>About Owner</h2>
+        <p>生誕｜2001年6月18日</p>
+        <p>出身地｜日本・栃木県</p>
+        <p>居住地｜日本・東京都（23区内）</p>
+        <p>職業｜YouTuber・個人投資家・会社役員</p>
+        <p>愛車 | スバル・レガシィ</p>
+        <p>────────────────────────────────────</p>
+        <div class="link-buttons">
+            <p>メディア</p>
+            <a href="https://www.youtube.com/@らいらい/" target="_blank">らいらい</a>
+            <a href="https://www.youtube.com/channel/UCv0W6P8wb48lepdWPzVry7Q" target="_blank">きらくん</a>
+            <a href="https://ja.wikipedia.org/wiki/%E8%BF%91%E9%87%8E%E9%9B%B7" target="_blank">Wikipedia</a>
+            <p>連絡先</p>
+            <a href="https://discord.gg/hpKCE55gjh" target="_blank">Discord</a>
+            <a href="https://x.com/rairai0618" target="_blank">Twitter｜X</a>
+            
+            <button class="mail-open-btn" onclick="toggleMailModal()">お問い合わせを送る</button>
+        </div>
+    </section>
+
+    <section id="server">
+        <h2>Company Information</h2>
+        <p><strong>会社名：</strong> なんでも制作株式会社</p>
+        <p><strong>内容：</strong> 不動産事業｜トレーディング事業｜メディア制作事業｜経営コンサルティング業務</p>
+    </section>
+</div>
+
+<div id="mail-modal">
+    <div class="modal-body">
+        <span class="modal-close" onclick="toggleMailModal()">&times;</span>
+        <h3>お問い合わせフォーム</h3>
+        <form action="https://formspree.io/f/rairai0618@gmail.com" method="POST">
+            <input type="email" name="email" placeholder="あなたのメールアドレス" required>
+            <textarea name="message" rows="5" placeholder="ご用件を入力してください" required></textarea>
+            <button type="submit" class="submit-btn">この内容で送信する</button>
+        </form>
+    </div>
+</div>
+
+<script>
+// サイドメニューの開閉
+function toggleMenu() {
+    document.getElementById("side-menu").classList.toggle("open");
+    document.getElementById("menu-overlay").classList.toggle("open");
+}
+
+// メールモーダルの開閉
+function toggleMailModal() {
+    const modal = document.getElementById("mail-modal");
+    if (modal.style.display === "flex") {
+        modal.style.display = "none";
+    } else {
+        modal.style.display = "flex";
+    }
+}
+</script>
+
+</body>
+</html>
