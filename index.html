@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>めたすけ ｜ ホームページ</title>
+    
+    <link rel="icon" href="favicon.jpg" type="image/jpeg">
+    <style>
+        :root {
+            --main-bg: #ffffffb5;
+            --card-bg: rgba(26, 26, 26, 0.9); /* カードも少し透かすとかっこいいです */
+            --accent-color: #00d2ff; 
+            --text-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* --- サイドメニューのCSS --- */
+        #menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 1002;
+            padding: 10px;
+        }
+
+        #menu-toggle span {
+            display: block;
+            width: 30px;
+            height: 4px;
+            background-color: white;
+            margin-bottom: 5px;
+            border-radius: 2px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5); /* ボタンを見やすく */
+        }
+
+        #side-menu {
+            position: fixed;
+            top: 0;
+            left: -280px; 
+            width: 280px;
+            height: 100%;
+            background-color: #1a1a1a; 
+            transition: 0.4s ease;
+            z-index: 1001;
+            padding-top: 60px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+        }
+
+        #side-menu.open {
+            left: 0; 
+        }
+
+        .close-btn {
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-align: right;
+        }
+
+        #side-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #side-menu ul li a {
+            display: block;
+            padding: 15px 25px;
+            color: var(--accent-color); 
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #333;
+        }
+
+        #side-menu ul li a:hover {
+            background-color: #333;
+        }
+
+        #menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+        }
+
+        #menu-overlay.open {
+            display: block;
+        }
+
+        /* --- ヘッダー（背景を透かす修正箇所） --- */
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* 背景を透明にし、文字に影をつけて浮かび上がらせる */
+            background: transparent; 
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin: 0;
+            color: var(--accent-color);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* 文字の後ろを透かす分、影を強くしました */
+        }
+
+        header p {
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        /* --- コンテンツエリア --- */
+        .container {
+            max-width: 900px;
+            margin: -50px auto 50px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px); /* 背景を少しぼかすとおしゃれになります */
+        }
+
+        h1, h2 { color: var(--accent-color); }
+
+        .server-status {
+            display: inline-block;
+            background: #27ae60;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .link-buttons a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+            border: 1px solid var(--accent-color);
+        }
+
+        .link-buttons a:hover {
+            background: var(--accent-color);
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+<div id="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div id="side-menu">
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="forum.html">Forum</a></li>
+        </ul>
+    </nav>
+    <div class="close-btn" onclick="toggleMenu()">&times; Close</div>
+</div>
+
+<div id="menu-overlay" onclick="toggleMenu()"></div>
+
+    <header>
+        <h1>METASUKE</h1>
+        <p>めたすけのホームページ</p>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>最近バイブコーディング始めました！</p>
+            <p>自分でもコード書きたい...</p>
+            <div class="link-buttons">
+                <a href="https://www.youtube.com/@metasukech" target="_blank">Youtube Channel</a>
+                <a href="https://www.youtube.com/@metasuke-271" target="_blank">Sub Channel</a>
+                <a href="https://www.scratch.mit.edu/users/mc_karbon/" target="_blank">Scratch</a>
+                <a href="https://www.geartics.com/metasukech" target="_blank">Device</a>
+            </div>
+        </section>
+
+        <section id="server">
+            <h2>Server Information</h2>
+            <div class="server-status">Online</div>
+            <p><strong>サーバー名：</strong> Razyn Network</p>
+            <p><strong>内容：</strong> 主にPvPです。サバイバルもあります。</p>
+            <p><strong>ルール：</strong> Not Cheating Bruh!</p>
+            <div class="link-buttons">
+                <a href="https://yuuma57475.github.io/zemusite/" target="_blank">HomePage</a>
+                <a href="https://discord.gg/SaEtNBVjBa" target="_blank">Discord</a>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Current Projects</h2>
+            <ul>
+                <li><strong>Typing Quest:</strong> 新タイピングゲーム開発中！</li>
+                <li><strong>ROD WARS:</strong> Plugin開発中！</li>
+                <li><strong>Parkour:</strong> ParkourPlugin開発中！Hypixelのロビーのようなものを作っています！</li>
+            </ul>
+        </section>
+    </div>
+
+<script>
+function toggleMenu() {
+    document.getElementById("side-menu").classList.toggle("open");
+    document.getElementById("menu-overlay").classList.toggle("open");
+}
+</script>
+
+</body>
+</html>
+
+
