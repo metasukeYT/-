@@ -2,7 +2,7 @@
 #menu-toggle {
     position: fixed;
     top: 20px;
-    left: 20px;
+    right: 20px;
     cursor: pointer;
     z-index: 1000;
 }
@@ -18,7 +18,7 @@
 #side-menu {
     position: fixed;
     top: 0;
-    left: -250px; /* 画面の左に隠す */
+    right: -250px; /* 画面の左に隠す */
     width: 250px;
     height: 100%;
     background-color: #222;
@@ -29,7 +29,7 @@
 
 /* メニューが開いた時のクラス */
 #side-menu.open {
-    left: 0;
+    right: 0;
 }
 
 /* メニュー内のリンク */
